@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+#Porque Visual Code me pone solito el bendito archivo.
+*.vscode
