@@ -19,7 +19,7 @@ typedef struct Registro
     int deportista;
 } Registro;
 
-    int noRegistros=15; 
+    int noRegistros=8; 
     Registro registro[60];
 
 void leerDatos(){
