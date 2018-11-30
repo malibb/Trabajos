@@ -341,7 +341,7 @@ int main(){
 	/*IMPRIMIR RESPUESTAS*/
 	/*iMPRIMIR PREGUNTAS*/
     int n=10;
-	opcion=(int *)malloc(n*sizeof(int));
+	opcion=(int *)malloc(10*sizeof(int));
 	;
 
     //printf("Elegi aleatorios");
