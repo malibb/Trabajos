@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.shell.windows.options": { 
+        "PowerShell (x64)": "C:\\WINDOWS\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "PowerShell (x86)": "C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Cmd (x64)": "C:\\WINDOWS\\sysnative\\cmd.exe",
+        "Cmd (x86)": "C:\\WINDOWS\\system32\\cmd.exe"
+}

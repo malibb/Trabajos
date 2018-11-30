@@ -1,0 +1,18 @@
+
+Esto es otro texto dentro del fichero.
+Dia 0
+Desayuno:
+Entrada     :Papaya
+Plato Fuerte: Salmon
+Postre      : Turron
+Bebida      : Caldo
+Comida:
+Entrada     : Licuado de fresa
+Plato Fuerte: Salmon
+Postre      : Bisteck
+Bebida      : Leche
+Cena:
+Entrada     : Papaya
+Plato Fuerte: Arroz
+Postre      : Asado
+Bebida      : Albondigas
