@@ -61,7 +61,6 @@ void cargarP(){
 }
 void cargarR(){
     strcpy(respuestas[0],"-6");
-
     strcpy(respuestas[1],"6");
     strcpy(respuestas[2],"10");
     strcpy(respuestas[3],"5");
@@ -229,21 +228,20 @@ void cargarArreglos(){
 			preguntas[i]= (char*)malloc(200*sizeof(char));
 	    }
 	
-	
+	//numero caracteres de la palabra 200 y el 160 es or las repsuestas 
 		respuestas=(char **)malloc(160*sizeof(char*));
 	for(int i=0;i<160;i++){
 			respuestas[i]= (char*)malloc(200*sizeof(char));
 	}
-    printf("memoria");
+    //printf("memoria");
     cargarP();
     printf("P");
     cargarR();
-    printf("R");
+    //printf("R");
 }
 
-
-
 void cargarTodo(){
+    //una pregunta, cuatro respuestas con 200 de caracteres/letras
 	for (int i = 0; i < NOP; i++)	{
 	    cuestionario[i].pregunta=(char *)malloc(200*sizeof(char));;
 	    cuestionario[i].respuesta=(char **)malloc(4*sizeof(char*));;
@@ -251,7 +249,7 @@ void cargarTodo(){
 		    cuestionario[i].respuesta[j]=(char *)malloc(200*sizeof(char));;
 	    }
 	}
-
+    //pegar en cuestionario, la respectivas preguntas y respuesta
 	int noRes=0;
 	for (int i = 0; i < NOP; i++)	{
 		strcpy(cuestionario[i].pregunta,preguntas[i]);
@@ -262,12 +260,17 @@ void cargarTodo(){
 		}
 	}
 }
-
+//arrglo de opciones ynumero de preguntas totales
 int comparar(int *arregloInt,int n){
     //printf("Comparar");
 	int r=0,m;
+    //recorrrer pregruntas
+    //[][][][][][][][][] arreglo con valores aleatorios
+    //0  1 2 3 4 5 6 7 8..10
+    //queremos checar si son diferentes, para no imprimir la misma pregunta
 	for(int i=0; i<n;i++){
 		m=1;
+        //recorrer preguntas
 		for(int j=0; j<n;j++){
             if(i!=j){
                 if(arregloInt[i]!=arregloInt[j]){
@@ -279,7 +282,8 @@ int comparar(int *arregloInt,int n){
             }
 		}
 		if(m==n){
-			r++;
+			//si todos son diferentes para el arrglo[i] i=0,1,2,3...10
+            r++;
 		}
 	}
 	r=(r==10)?0:1;
@@ -294,9 +298,11 @@ int randomV(int n)
     }
     return a;
 }
-
+//retorna arreglo con los numeros para la lista a imprimir de 10
 int *elegirNPreguntasAleatorios(int n){
+    //opciones guardamos el numero de pregunta que va a imprimir
 	int *opciones=(int *)malloc(n*sizeof(int));
+
     for(int i=0; i<n;i++){
         opciones[i]=0;
     }
@@ -305,7 +311,7 @@ int *elegirNPreguntasAleatorios(int n){
         //printf("HolaAleatorios");
 		for(int i=0; i<n;i++){
 			opciones[i]=randomV(40)+(rand()%20);
-            if(opciones[i]>40){
+            if(opciones[i]>39){
                 opciones[i]-=40;
             }
             //printf("random %d",opciones[i]);
@@ -341,8 +347,7 @@ int main(){
 	/*IMPRIMIR RESPUESTAS*/
 	/*iMPRIMIR PREGUNTAS*/
     int n=10;
-	opcion=(int *)malloc(10*sizeof(int));
-	;
+	opcion=(int *)malloc(n*sizeof(int));
 
     //printf("Elegi aleatorios");
     FILE *fp;
@@ -352,7 +357,7 @@ int main(){
 
      while(1){
         printf("Hola, crearemos un cuestionario. n");
-        printf("Pon 1:Si. 2:No, no queria abrir este programa.\n");
+        printf("Pon 1:Si si quieres crearlo. 2:No, no queria abrir este programa.\n");
         int p;
 
         scanf("%d",&p);
@@ -369,12 +374,17 @@ int main(){
         printf("Nombre Archivo:%s.txt\n",archivo);
         fp = fopen ( archivo , "w+" );
         opcion=elegirNPreguntasAleatorios(n);
+        //recorrermos preguntas
         for(int i = 0,j=0; i < NOP; i++){
+            //recorremos las opciones
             for(int m=0; m<n;m++){
+                //Si la pregunta y la opcion es la misma, entonces la pregunta fue elegida para imprimir
                 if(opcion[m]==i){
-                    
+                    // la i es es id de pregunta en el cuestionario que es el arreglo de preguntas con respuesta
+                    //imprimirmos y guardamos
                     fprintf(fp,"\nPregunta %d:%s\n", j+1, cuestionario[i].pregunta);
                     printf("\nPregunta %d:%s\n", j+1, cuestionario[i].pregunta);
+                    // sus cuatro respuestas impresas y guardadas
                     for(int k = 0; k<4; k++){
                         printf("\t%c.- %s.\n",97+k,cuestionario[i].respuesta[k]);
                         fprintf(fp,"\t%c.- %s.\n",97+k,cuestionario[i].respuesta[k]);
@@ -383,7 +393,7 @@ int main(){
                 }   
             }    
         }
-        
+        //cerrar archivo
         fclose ( fp );
         printf("Otro cuestionario?\n");
         printf("1:Si. 2:No \n");

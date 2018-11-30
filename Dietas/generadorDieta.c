@@ -24,7 +24,7 @@ struct arregloRegistros{
 }   registro;
 
 void inicializar(){
-    /* strcpy(registro.renglon[].nombre,"");
+    /* strcpy(registro.renglon[numeroregistros+1].nombre,"");
     registro.renglon[].tipoTiempo=1;
     registro.renglon[].desayuno=1;
     registro.renglon[].comida=1;
@@ -555,19 +555,21 @@ void calcularDieta(char nombre[30], int tipo, int diaSemana){
        //printf("val :%d, i:%d" ,d[i],i);
     }
 
-    //Ya tengo todos los arreglos de alimentos, de un tipo Usuario,
+    //Ya tengo todos los arreglos de alimentos, de un tipo Usuario,imprimir
     FILE *fp;
  	
  	char archivo[30]="";
+    //Agregar al primer argumento, el segundo
     strcat(archivo,"dieta");
     strcat(archivo,nombre);
     strcat(archivo,".txt");
     printf("%s\n",archivo);
+    //abrimos archivo
  	fp = fopen ( archivo , "w+" );
     for(int s=0;s<diaSemana;s++){
         printf("\nDia %d\n",s);
         printf("Desayuno:\n");
-        
+
         printf("Entrada     :%s\n",dentrada[rand()%(d[0])].nombre);
         printf("Plato Fuerte: %s\n",dplatoFuerte[rand()%(d[1])].nombre);
         printf("Postre      : %s\n",dpostre[rand()%(d[2])].nombre);
